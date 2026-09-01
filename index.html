@@ -17043,7 +17043,7 @@ window.AUSBOX_DATA = {
     if (!results.length) {
       var em = document.createElement("div");
       em.className = "gsearch-empty";
-      em.innerHTML = esc(T("gs_empty")) + " <a class=\"gsearch-xlink\" href=\"AussieMMAHub.html\">" + esc(T("gs_try_other")) + " →</a>";
+      em.innerHTML = esc(T("gs_empty")) + " <a class=\"gsearch-xlink\" href=\"" + (window.AUSBOX_SISTER || "AussieMMAHub.html") + "\">" + esc(T("gs_try_other")) + " →</a>";
       res.innerHTML = "";
       res.appendChild(em);
       if (foot) foot.style.display = "none";
@@ -17178,6 +17178,19 @@ window.AUSBOX_DATA = {
   document.addEventListener("DOMContentLoaded", init);
 })();
 
+</script>
+<script>
+  /* Cross-site link fix: on GitHub Pages each app is a separate repo, so the
+     relative sister link (AussieMMAHub.html) 404s. Detect github.io hosting and
+     point the link at the real sibling site URL. Offline (file://) keeps the
+     relative link so the Desktop copies still work side by side. */
+  (function () {
+    var hosted = location.hostname.indexOf("github.io") !== -1;
+    var url = hosted ? "https://maccaofsouci-ship-it.github.io/aussie-mma-hub/" : "AussieMMAHub.html";
+    window.AUSBOX_SISTER = url;
+    var links = document.querySelectorAll('a[href="AussieMMAHub.html"]');
+    for (var i = 0; i < links.length; i++) links[i].href = url;
+  })();
 </script>
 </body>
 </html>
