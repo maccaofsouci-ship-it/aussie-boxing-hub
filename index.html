@@ -771,6 +771,9 @@ html[dir="rtl"] .mini-del { float: left; }
     <h2 data-i18n="bx_p4p">Australian Pound-for-Pound Rankings</h2>
     <p class="sub-note" id="boxers-note"></p>
     <div id="p4p-list" class="card-list"></div>
+    <h3 data-i18n="bx_p4p_world">🌍 World Pound-for-Pound Rankings</h3>
+    <p class="sub-note" id="world-p4p-note"></p>
+    <div id="world-p4p-list" class="card-list"></div>
     <h3 data-i18n="bx_mentions">Honourable Mentions</h3>
     <div id="mentions" class="mentions"></div>
     <h3 data-i18n="bx_active">All Active Australian Boxers <span id="active-count" class="active-count"></span></h3>
@@ -6378,7 +6381,73 @@ window.AUSBOX_DATA = {
     "location": "Victoria, Australia",
     "age": null
    }
-  ]
+  ],
+  "global_p4p": [
+   {
+    "rank": 1,
+    "name": "Naoya Inoue",
+    "division": "Super Bantamweight",
+    "titles": "Undisputed Super Bantamweight Champion",
+    "country": "Japan"
+   },
+   {
+    "rank": 2,
+    "name": "Oleksandr Usyk",
+    "division": "Heavyweight",
+    "titles": "Former Undisputed Cruiserweight & Heavyweight Champion",
+    "country": "Ukraine"
+   },
+   {
+    "rank": 3,
+    "name": "David Benavidez",
+    "division": "Light Heavyweight / Cruiserweight",
+    "titles": "WBA & WBO Unified Cruiserweight Champion · WBC Light Heavyweight Champion",
+    "country": "USA"
+   },
+   {
+    "rank": 4,
+    "name": "Shakur Stevenson",
+    "division": "Super Lightweight",
+    "titles": "WBO Super Lightweight Champion",
+    "country": "USA"
+   },
+   {
+    "rank": 5,
+    "name": "Jesse \"Bam\" Rodriguez",
+    "division": "Bantamweight",
+    "titles": "WBA Bantamweight Champion",
+    "country": "USA"
+   },
+   {
+    "rank": 6,
+    "name": "Dmitry Bivol",
+    "division": "Light Heavyweight",
+    "titles": "WBA/WBO/IBF Light Heavyweight Champion",
+    "country": "Russia"
+   },
+   {
+    "rank": 7,
+    "name": "Devin Haney",
+    "division": "Welterweight",
+    "titles": "WBO Welterweight Champion",
+    "country": "USA"
+   },
+   {
+    "rank": 8,
+    "name": "Jaron \"Boots\" Ennis",
+    "division": "Super Welterweight",
+    "titles": "WBA/WBO Super Welterweight Champion",
+    "country": "USA"
+   },
+   {
+    "rank": 9,
+    "name": "Jai Opetaia",
+    "division": "Cruiserweight",
+    "titles": "Ring & Zuffa Cruiserweight Champion",
+    "country": "Australia"
+   }
+  ],
+  "global_p4p_note": "World pound-for-pound rankings per Boxing Life (PAGEANTSports), September 2026."
  },
  "tv": {
   "updated": "2026-08-29",
@@ -14245,6 +14314,7 @@ window.AUSBOX_DATA = {
       ev_local: "Local",
       ev_recent: "Recent Results",
       bx_p4p: "Australian Pound-for-Pound Rankings",
+      bx_p4p_world: "🌍 World Pound-for-Pound Rankings",
       bx_mentions: "Honourable Mentions",
       bx_active: "All Active Australian Boxers",
       bx_search: "🔍 Search boxers by name, division or record…",
@@ -14487,6 +14557,7 @@ window.AUSBOX_DATA = {
       ev_local: "Locales",
       ev_recent: "Resultados Recientes",
       bx_p4p: "Ranking Australiano Libra por Libra",
+      bx_p4p_world: "🌍 Ranking Mundial Libra por Libra",
       bx_mentions: "Menciones de Honor",
       bx_active: "Todos los Boxeadores Australianos Activos",
       bx_search: "🔍 Buscar boxeadores por nombre, división o récord…",
@@ -14729,6 +14800,7 @@ window.AUSBOX_DATA = {
       ev_local: "Locaux",
       ev_recent: "Résultats Récents",
       bx_p4p: "Classement Pound-for-Pound Australien",
+      bx_p4p_world: "🌍 Classement Pound-for-Pound Mondial",
       bx_mentions: "Mentions Honorables",
       bx_active: "Tous les Boxeurs Australiens Actifs",
       bx_search: "🔍 Rechercher un boxeur par nom, division ou palmarès…",
@@ -14971,6 +15043,7 @@ window.AUSBOX_DATA = {
       ev_local: "Lokal",
       ev_recent: "Mga Kamakailang Resulta",
       bx_p4p: "Australian Pound-for-Pound Rankings",
+      bx_p4p_world: "🌍 World Pound-for-Pound Rankings",
       bx_mentions: "Mga Honourable Mention",
       bx_active: "Lahat ng Aktibong Australian Boxer",
       bx_search: "🔍 Maghanap ng boksingero ayon sa pangalan, dibisyon o record…",
@@ -15555,6 +15628,19 @@ window.AUSBOX_DATA = {
         (b.note ? '<div class="boxer-note">' + esc(b.note) + '</div>' : '') +
       '</article>';
     }).join("");
+    var wp4p = document.getElementById("world-p4p-list");
+    if (wp4p) {
+      document.getElementById("world-p4p-note").textContent = DATA.boxers.global_p4p_note || "";
+      wp4p.innerHTML = (DATA.boxers.global_p4p || []).map(function (b) {
+        return '<article class="card" data-fname="' + esc(b.name) + '" data-fsrc="p4p">' +
+          '<div class="boxer-head">' +
+            '<span class="rank-badge">' + b.rank + '</span>' + avatarHTML(b) +
+            '<div><div class="boxer-name">' + esc(b.name) + '</div>' +
+            '<div><span class="boxer-record">' + esc(b.record || "") + '</span>' + esc(b.division) + (b.titles ? ' · ' + esc(b.titles) : '') + '</div></div>' +
+          '</div>' +
+        '</article>';
+      }).join("");
+    }
     var men = document.getElementById("mentions");
     men.innerHTML = (DATA.boxers.honourable_mentions || []).map(function (m) { return "<span>" + esc(m) + "</span>"; }).join("");
   }
