@@ -59937,6 +59937,12 @@ window.AUSBOX_DATA = {
     var tabs = document.querySelectorAll(".tab");
     tabs.forEach(function (t) { if (t.dataset.tab === entry.tab) t.click(); });
     gsClose();
+    /* For fighter entries, open the profile overlay instead of just scrolling */
+    if (entry.cat === "gs_cat_boxers" || entry.cat === "gs_cat_mma") {
+      var src = entry.cat === "gs_cat_mma" ? "mma" : "boxers";
+      openFighterProfile(entry.title, src);
+      return;
+    }
     setTimeout(function () {
       var panel = document.getElementById("tab-" + entry.tab);
       if (!panel) return;
