@@ -662,6 +662,27 @@ h2.reading, h3.reading, h4.reading, p.reading, li.reading, .train-desc.reading {
 .fh-loss { color: #fff; background: var(--red); }
 .fh-draw { color: var(--text); background: rgba(255,255,255,.12); }
 .fh-venue { color: var(--text-dim, #9aa); text-align: right; }
+
+/* ---------------- Event Detail Overlay ---------------- */
+.event-detail-header { margin-bottom: 16px; }
+.event-detail-title { font-size: 20px; font-weight: 800; line-height: 1.3; }
+.event-detail-cats { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
+.event-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.event-detail-grid .profile-field.wide { grid-column: 1 / -1; }
+.event-detail-main { margin-top: 14px; }
+.event-detail-main h4 { font-size: 14px; font-weight: 700; color: var(--gold); margin-bottom: 6px; }
+.event-detail-main p { color: var(--text); line-height: 1.5; font-size: 14px; }
+.event-detail-links { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
+.event-detail-links .btn { margin: 0; }
+.event-detail-map { margin-top: 14px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.event-detail-map iframe { width: 100%; height: 280px; border: 0; display: block; }
+.event-detail-map-placeholder { height: 280px; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 14px; text-align: center; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+.event-detail-back { margin-top: 16px; }
+@media (max-width: 480px) {
+  .event-detail-grid { grid-template-columns: 1fr; }
+  .event-detail-map iframe { height: 200px; }
+}
+
 @media (max-width: 480px) {
   .fh-row { grid-template-columns: 74px 1fr 38px; }
   .fh-venue { grid-column: 1 / -1; text-align: left; padding-left: 0; }
@@ -1112,6 +1133,13 @@ html[dir="rtl"] .mini-del { float: left; }
   <div class="profile-panel">
     <button class="profile-close" data-close-profile aria-label="Close">✕</button>
     <div id="profile-content"></div>
+  </div>
+</div>
+
+<div id="event-detail" class="profile-overlay">
+  <div class="profile-panel" style="max-width: 700px;">
+    <button class="profile-close" data-close-event aria-label="Close">✕</button>
+    <div id="event-detail-content"></div>
   </div>
 </div>
 
@@ -6532,21 +6560,9 @@ window.AUSBOX_DATA = {
   ]
  },
  "tv_world": {
-  "updated": "2026-10-01",
+  "updated": "2026-10-03",
   "note": "Worldwide TV & streaming schedules for major international boxing events (outside Australia). Broadcast rights shift often — always confirm the exact channel and local start time with the promoter or your provider before buying. Data below reflects published schedules from box.live, BoxRec, Boxingscene, ESPN and official promoter announcements.",
   "schedule": [
-   {
-    "date": "Fri 2 Oct 2026",
-    "sort": "2026-10-02",
-    "title": "Jamaine Jones vs David Sanchez",
-    "belts": "Caribe Royale Orlando, Orlando, FL, USA",
-    "watch": [
-     {
-      "region": "USA",
-      "channel": "ProBox TV"
-     }
-    ]
-   },
    {
     "date": "Sat 3 Oct 2026",
     "sort": "2026-10-03",
@@ -57102,6 +57118,15 @@ window.AUSBOX_DATA = {
       ev_resultTag: "RESULT",
       ev_empty: "No events in this category right now — check back soon! 🥊",
       ev_tbc: "TBC",
+      ev_date: "Date",
+      ev_time: "Time",
+      ev_location: "Location",
+      ev_promoter: "Promoter",
+      ev_tv: "TV / Stream",
+      ev_category: "Category",
+      ev_mainEvent: "Main Event",
+      ev_back: "← Back to Events",
+      ev_noMap: "📍 Location listed above (map unavailable for this venue)",
       bx_next: "🔜 Next:",
       bx_last: "📼 Last:",
       bx_boxer: " boxer",
@@ -57346,6 +57371,15 @@ window.AUSBOX_DATA = {
       ev_resultTag: "RESULTADO",
       ev_empty: "No hay eventos en esta categoría por ahora — ¡vuelve pronto! 🥊",
       ev_tbc: "PENDIENTE",
+      ev_date: "Fecha",
+      ev_time: "Hora",
+      ev_location: "Ubicación",
+      ev_promoter: "Promotor",
+      ev_tv: "TV / Transmisión",
+      ev_category: "Categoría",
+      ev_mainEvent: "Evento Principal",
+      ev_back: "← Volver a Eventos",
+      ev_noMap: "📍 Ubicación listada arriba (mapa no disponible para este lugar)",
       bx_next: "🔜 Próximo:",
       bx_last: "📼 Último:",
       bx_boxer: " boxeador",
@@ -57590,6 +57624,15 @@ window.AUSBOX_DATA = {
       ev_resultTag: "RÉSULTAT",
       ev_empty: "Aucun événement dans cette catégorie pour l'instant — revenez bientôt ! 🥊",
       ev_tbc: "À CONFIRMER",
+      ev_date: "Date",
+      ev_time: "Heure",
+      ev_location: "Lieu",
+      ev_promoter: "Promoteur",
+      ev_tv: "TV / Diffusion",
+      ev_category: "Catégorie",
+      ev_mainEvent: "Événement Principal",
+      ev_back: "← Retour aux Événements",
+      ev_noMap: "📍 Lieu indiqué ci-dessus (carte indisponible pour ce lieu)",
       bx_next: "🔜 Prochain :",
       bx_last: "📼 Dernier :",
       bx_boxer: " boxeur",
@@ -57834,6 +57877,15 @@ window.AUSBOX_DATA = {
       ev_resultTag: "RESULTA",
       ev_empty: "Walang event sa kategoryang ito ngayon — bumalik ka agad! 🥊",
       ev_tbc: "IPAPAANNOUNCE",
+      ev_date: "Petsa",
+      ev_time: "Oras",
+      ev_location: "Lokasyon",
+      ev_promoter: "Promoter",
+      ev_tv: "TV / Stream",
+      ev_category: "Kategorya",
+      ev_mainEvent: "Pangunahing Laban",
+      ev_back: "← Bumalik sa Events",
+      ev_noMap: "📍 Nakalagay ang lokasyon sa itaas (walang mapa para sa lugar na ito)",
       bx_next: "🔜 Susunod:",
       bx_last: "📼 Huling:",
       bx_boxer: " boksingero",
@@ -58267,7 +58319,7 @@ window.AUSBOX_DATA = {
       if (e.tickets) links += '<a class="btn primary" href="' + esc(e.tickets) + '" target="_blank" rel="noopener">' + T("ev_tickets") + '</a>';
       if (e.website) links += '<a class="btn" href="' + esc(e.website) + '" target="_blank" rel="noopener">' + T("ev_promoterSite") + '</a>';
       var badge = e.state ? '<span class="tag state">' + esc(e.state) + '</span>' : "";
-      return '<article class="card">' +
+      return '<article class="card" data-event-id="' + esc(e.id) + '">' +
         '<div class="card-title">' + esc(e.title) + '<span class="tag ' + tagClass(e.category) + '">' + tagLabel(e.category) + '</span>' + badge + '</div>' +
         '<div class="card-meta">' +
           '<div class="meta-row">📅 <b>' + esc(fmtDate(e.date)) + '</b>' + (e.start_time ? ' · ' + esc(e.start_time) : '') + '</div>' +
@@ -58286,7 +58338,7 @@ window.AUSBOX_DATA = {
     var list = document.getElementById("recent-list");
     var recent = (DATA.events.recent || []).slice().sort(function (a, b) { return (b.date || "").localeCompare(a.date || ""); });
     list.innerHTML = recent.map(function (e) {
-      return '<article class="card">' +
+      return '<article class="card" data-event-id="' + esc(e.id) + '">' +
         '<div class="card-title">' + esc(e.title) + ' <span class="tag local">' + T("ev_resultTag") + '</span></div>' +
         '<div class="card-meta">' +
           '<div class="meta-row">📅 <b>' + esc(fmtDate(e.date)) + '</b> · 📍 ' + esc(e.location) + '</div>' +
@@ -58515,6 +58567,97 @@ window.AUSBOX_DATA = {
       if (!card) return;
       if (e.target.closest("a,button")) return;
       openFighterProfile(card.getAttribute("data-fname"), card.getAttribute("data-fsrc") || "boxers");
+    });
+  }
+
+  /* ============ Event Detail Overlay (click event card) ============ */
+  function openEventDetail(ev) {
+    if (!ev) return;
+    var html = '';
+    // Header
+    var badges = '';
+    badges += '<span class="tag ' + tagClass(ev.category) + '">' + tagLabel(ev.category) + '</span>';
+    if (ev.state) badges += '<span class="tag state">' + esc(ev.state) + '</span>';
+    html += '<div class="event-detail-header">' +
+      '<div class="event-detail-title">' + esc(ev.title) + '</div>' +
+      '<div class="event-detail-cats">' + badges + '</div>' +
+    '</div>';
+    // Grid fields
+    var fields = '';
+    fields += pfField(T("ev_date"), esc(fmtDate(ev.date)), false);
+    if (ev.start_time) fields += pfField(T("ev_time"), esc(ev.start_time), false);
+    fields += pfField(T("ev_location"), esc(ev.location), false);
+    fields += pfField(T("ev_promoter"), esc(ev.promoter || T("ev_tbc")), false);
+    fields += pfField(T("ev_tv"), esc(ev.tv || T("ev_tbc")), true);
+    if (ev.category) fields += pfField(T("ev_category"), esc(ev.category), false);
+    html += '<div class="event-detail-grid">' + fields + '</div>';
+    // Main event
+    html += '<div class="event-detail-main">';
+    if (ev.main_event) {
+      html += '<h4>' + T("ev_mainEvent") + '</h4><p>' + linkNames(ev.main_event) + '</p>';
+    }
+    if (ev.undercard) {
+      html += '<h4>' + T("ev_undercard") + '</h4><p>' + linkNames(ev.undercard) + '</p>';
+    }
+    html += '</div>';
+    // Links
+    var links = '';
+    if (ev.tickets) links += '<a class="btn primary" href="' + esc(ev.tickets) + '" target="_blank" rel="noopener">' + T("ev_tickets") + '</a>';
+    if (ev.website) links += '<a class="btn" href="' + esc(ev.website) + '" target="_blank" rel="noopener">' + T("ev_promoterSite") + '</a>';
+    if (links) html += '<div class="event-detail-links">' + links + '</div>';
+    // Map
+    if (ev.lat && ev.lng) {
+      var zoom = 13;
+      var lat = ev.lat, lng = ev.lng;
+      var margin = 0.01;
+      var bbox = (lng - margin) + ',' + (lat - margin) + ',' + (lng + margin) + ',' + (lat + margin);
+      var mapUrl = 'https://www.openstreetmap.org/export/embed.html?bbox=' + bbox +
+        '&layer=mapnik&marker=' + lat + ',' + lng;
+      html += '<div class="event-detail-map"><iframe src="' + esc(mapUrl) + '" loading="lazy" allowfullscreen></iframe></div>';
+    } else {
+      html += '<div class="event-detail-map-placeholder">' + T("ev_noMap") + '</div>';
+    }
+    // Back button
+    html += '<div class="event-detail-back"><button class="btn primary" data-close-event>' + T("ev_back") + '</button></div>';
+
+    var panel = document.getElementById("event-detail");
+    if (!panel) return;
+    document.getElementById("event-detail-content").innerHTML = html;
+    panel.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeEventDetail() {
+    var panel = document.getElementById("event-detail");
+    if (!panel) return;
+    panel.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+  function findEventById(id) {
+    if (!DATA || !DATA.events) return null;
+    var lists = [DATA.events.upcoming, DATA.events.recent];
+    for (var li = 0; li < lists.length; li++) {
+      var arr = lists[li] || [];
+      for (var ei = 0; ei < arr.length; ei++) {
+        if (arr[ei].id === id) return arr[ei];
+      }
+    }
+    return null;
+  }
+  function initEventDetail() {
+    var panel = document.getElementById("event-detail");
+    if (!panel) return;
+    panel.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("[data-close-event]")) { closeEventDetail(); return; }
+      if (e.target === panel) closeEventDetail();
+    });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") { closeEventDetail(); closeFighterProfile(); } });
+    document.addEventListener("click", function (e) {
+      var card = e.target.closest ? e.target.closest("[data-event-id]") : null;
+      if (!card) return;
+      if (e.target.closest("a,button")) return;
+      var eid = card.getAttribute("data-event-id");
+      var ev = findEventById(eid);
+      if (ev) openEventDetail(ev);
     });
   }
 
@@ -59522,6 +59665,7 @@ window.AUSBOX_DATA = {
     initGyms();
     initPubs();
     initFighterProfile();
+    initEventDetail();
     initGlobalSearch();
   }
 
@@ -59937,12 +60081,6 @@ window.AUSBOX_DATA = {
     var tabs = document.querySelectorAll(".tab");
     tabs.forEach(function (t) { if (t.dataset.tab === entry.tab) t.click(); });
     gsClose();
-    /* For fighter entries, open the profile overlay instead of just scrolling */
-    if (entry.cat === "gs_cat_boxers" || entry.cat === "gs_cat_mma") {
-      var src = entry.cat === "gs_cat_mma" ? "mma" : "boxers";
-      openFighterProfile(entry.title, src);
-      return;
-    }
     setTimeout(function () {
       var panel = document.getElementById("tab-" + entry.tab);
       if (!panel) return;
