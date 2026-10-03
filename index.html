@@ -667,6 +667,8 @@ h2.reading, h3.reading, h4.reading, p.reading, li.reading, .train-desc.reading {
 .event-detail-header { margin-bottom: 16px; }
 .event-detail-title { font-size: 20px; font-weight: 800; line-height: 1.3; }
 .event-detail-cats { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
+.event-detail-poster { margin-top: 14px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); line-height: 0; }
+.event-detail-poster img { width: 100%; height: auto; display: block; max-height: 400px; object-fit: cover; object-position: center; }
 .event-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .event-detail-grid .profile-field.wide { grid-column: 1 / -1; }
 .event-detail-main { margin-top: 14px; }
@@ -58645,6 +58647,10 @@ window.AUSBOX_DATA = {
       '<div class="event-detail-title">' + esc(ev.title) + '</div>' +
       '<div class="event-detail-cats">' + badges + '</div>' +
     '</div>';
+    // Poster
+    if (ev.poster) {
+      html += '<div class="event-detail-poster"><img src="' + esc(ev.poster) + '" alt="' + esc(ev.title) + ' poster" loading="lazy"></div>';
+    }
     // Grid fields
     var fields = '';
     fields += pfField(T("ev_date"), esc(fmtDate(ev.date)), false);
