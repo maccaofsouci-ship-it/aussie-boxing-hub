@@ -278,6 +278,9 @@ h2.reading, h3.reading, h4.reading, p.reading, li.reading, .train-desc.reading {
 .tag.international { background: var(--blue); color: #fff; }
 .tag.local { background: var(--green); color: #06301c; }
 .tag.state { background: #f6c945; color: #35289e; }
+.tag.cancelled { background: #6b7280; color: #fff; text-transform: uppercase; letter-spacing: .04em; }
+.card.is-cancelled { opacity: .72; border-left: 4px solid #6b7280; }
+.card.is-cancelled .card-title { text-decoration: line-through; text-decoration-thickness: 2px; }
 
 .card-meta { display: flex; flex-direction: column; gap: 4px; margin-bottom: 9px; }
 .meta-row { font-size: 13.5px; color: var(--muted); overflow-wrap: anywhere; }
@@ -58543,6 +58546,7 @@ window.AUSBOX_DATA = {
       ev_undercard: "Undercard:",
       ev_resultTag: "RESULT",
       ev_empty: "No events in this category right now — check back soon! 🥊",
+      ev_cancelled: "CANCELLED — do not travel",
       ev_tbc: "TBC",
       ev_date: "Date",
       ev_time: "Time",
@@ -58796,6 +58800,7 @@ window.AUSBOX_DATA = {
       ev_undercard: "Cartelera previa:",
       ev_resultTag: "RESULTADO",
       ev_empty: "No hay eventos en esta categoría por ahora — ¡vuelve pronto! 🥊",
+      ev_cancelled: "CANCELADO — no viajes",
       ev_tbc: "PENDIENTE",
       ev_date: "Fecha",
       ev_time: "Hora",
@@ -59049,6 +59054,7 @@ window.AUSBOX_DATA = {
       ev_undercard: "Préliminaires :",
       ev_resultTag: "RÉSULTAT",
       ev_empty: "Aucun événement dans cette catégorie pour l'instant — revenez bientôt ! 🥊",
+      ev_cancelled: "ANNULÉ — ne vous déplacez pas",
       ev_tbc: "À CONFIRMER",
       ev_date: "Date",
       ev_time: "Heure",
@@ -59302,6 +59308,7 @@ window.AUSBOX_DATA = {
       ev_undercard: "Undercard:",
       ev_resultTag: "RESULTA",
       ev_empty: "Walang event sa kategoryang ito ngayon — bumalik ka agad! 🥊",
+      ev_cancelled: "KINANSELA — huwag maglakbay",
       ev_tbc: "IPAPAANNOUNCE",
       ev_date: "Petsa",
       ev_time: "Oras",
@@ -59741,11 +59748,12 @@ window.AUSBOX_DATA = {
     }
     if (!events.length) { list.innerHTML = '<p class="empty">' + T("ev_empty") + '</p>'; return; }
     list.innerHTML = events.map(function (e) {
+      var isCanc = !!e.cancelled;
       var links = "";
-      if (e.tickets) links += '<a class="btn primary" href="' + esc(e.tickets) + '" target="_blank" rel="noopener">' + T("ev_tickets") + '</a>';
-      if (e.website) links += '<a class="btn" href="' + esc(e.website) + '" target="_blank" rel="noopener">' + T("ev_promoterSite") + '</a>';
-      var badge = e.state ? '<span class="tag state">' + esc(e.state) + '</span>' : "";
-      return '<article class="card" data-event-id="' + esc(e.id) + '">' +
+      if (!isCanc && e.tickets) links += '<a class="btn primary" href="' + esc(e.tickets) + '" target="_blank" rel="noopener">' + T("ev_tickets") + '</a>';
+      if (!isCanc && e.website) links += '<a class="btn" href="' + esc(e.website) + '" target="_blank" rel="noopener">' + T("ev_promoterSite") + '</a>';
+      var badge = (isCanc ? '<span class="tag cancelled">' + T("ev_cancelled") + '</span>' : "") + (e.state ? '<span class="tag state">' + esc(e.state) + '</span>' : "");
+      return '<article class="card' + (isCanc ? ' is-cancelled' : '') + '" data-event-id="' + esc(e.id) + '">' +
         '<div class="card-title">' + esc(e.title) + '<span class="tag ' + tagClass(e.category) + '">' + tagLabel(e.category) + '</span>' + badge + '</div>' +
         '<div class="card-meta">' +
           '<div class="meta-row">📅 <b>' + esc(fmtDate(e.date)) + '</b>' + (e.start_time ? ' · ' + esc(e.start_time) : '') + '</div>' +
