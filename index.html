@@ -939,6 +939,64 @@ h3 { color: #ffd166; }
 .tix-name { font-weight: 700; color: #fff; font-size: 14px; }
 .tix-meta { font-size: 12px; color: #d7cfff; margin-top: 4px; }
 
+/* ---------- Event promo block (fight-week promo) ---------- */
+.ev-promo { margin-top: 18px; display: flex; flex-direction: column; gap: 14px; }
+.ev-promo-tagline {
+  font-size: 17px; font-weight: 800; line-height: 1.35; color: #fff;
+  background: var(--grad-hero); border-radius: 14px; padding: 14px 16px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .28);
+}
+.ev-countdown { display: flex; gap: 10px; flex-wrap: wrap; }
+.ev-cd-cell {
+  flex: 1 1 68px; text-align: center; border-radius: 12px; padding: 10px 6px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .18), rgba(255, 255, 255, .05));
+  border: 1px solid rgba(255, 255, 255, .25);
+}
+.ev-cd-num { font-size: 24px; font-weight: 800; color: #ffe066; line-height: 1; }
+.ev-cd-lab { font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: #eae4ff; margin-top: 5px; }
+.ev-promo-sec { border: 1px solid var(--line); border-radius: 14px; padding: 14px; background: rgba(255, 255, 255, .03); }
+.ev-promo-sec h4 { font-size: 14px; font-weight: 800; color: var(--gold); margin: 0 0 10px; letter-spacing: .02em; }
+.ev-bout { display: flex; gap: 10px; align-items: flex-start; padding: 9px 0; border-top: 1px solid var(--line); }
+.ev-bout:first-child { border-top: 0; padding-top: 0; }
+.ev-bout-body { flex: 1 1 auto; }
+.ev-bout-main { font-size: 14px; font-weight: 700; color: #fff; }
+.ev-bout-meta { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.ev-bout-badge { font-size: 10.5px; font-weight: 800; letter-spacing: .08em; color: #06121f; background: #ffe066; border-radius: 999px; padding: 3px 9px; white-space: nowrap; }
+.ev-tix-table { width: 100%; border-collapse: collapse; }
+.ev-tix-table td { padding: 7px 0; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--text); }
+.ev-tix-table tr:first-child td { border-top: 0; }
+.ev-tix-table td:last-child { text-align: right; font-weight: 800; color: #ffe066; white-space: nowrap; }
+.ev-video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+.ev-video { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); cursor: pointer; background: #06121f; }
+.ev-video img { width: 100%; height: 112px; object-fit: cover; display: block; }
+.ev-video iframe { width: 100%; height: 200px; border: 0; display: block; }
+.ev-video-play { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 30px; color: #fff; text-shadow: 0 2px 10px rgba(0, 0, 0, .7); }
+.ev-video-title { position: absolute; left: 0; right: 0; bottom: 0; padding: 6px 8px; font-size: 11.5px; font-weight: 700; color: #fff; background: linear-gradient(transparent, rgba(0, 0, 0, .85)); }
+.ev-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 8px; }
+.ev-gallery img { width: 100%; height: 92px; object-fit: cover; border-radius: 10px; border: 1px solid var(--line); display: block; }
+.ev-quote { border-left: 3px solid #ffe066; padding: 4px 0 4px 12px; margin-bottom: 12px; }
+.ev-quote:last-child { margin-bottom: 0; }
+.ev-quote-text { font-size: 13.5px; color: #f2eeff; line-height: 1.55; font-style: italic; }
+.ev-quote-who { font-size: 12px; color: var(--gold); font-weight: 800; margin-top: 6px; }
+.ev-quote-src { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.ev-poll-opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.ev-poll-btn { border: 1px solid rgba(255, 255, 255, .3); background: rgba(255, 255, 255, .08); color: #f2eeff; font: inherit; font-size: 13px; font-weight: 700; padding: 9px 16px; border-radius: 999px; cursor: pointer; }
+.ev-poll-btn.on { background: var(--grad-hero); border-color: transparent; color: #fff; }
+.ev-poll-note { font-size: 12px; color: var(--muted); margin-top: 9px; }
+.ev-tape-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: center; padding: 7px 0; border-top: 1px solid var(--line); }
+.ev-tape-row:first-child { border-top: 0; }
+.ev-tape-a { text-align: right; font-weight: 800; color: #fff; font-size: 13.5px; }
+.ev-tape-b { text-align: left; font-weight: 800; color: #fff; font-size: 13.5px; }
+.ev-tape-lab { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-align: center; }
+.ev-fact { font-size: 13px; color: var(--text); line-height: 1.55; padding: 5px 0 5px 18px; position: relative; }
+.ev-fact::before { content: "★"; position: absolute; left: 0; color: #ffe066; }
+.ev-promo-cta { display: flex; gap: 8px; flex-wrap: wrap; }
+.ev-promo-cta .btn { margin: 0; }
+@media (max-width: 620px) {
+  .ev-tix-table td { font-size: 12.5px; }
+  .ev-video-grid, .ev-gallery { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+}
+
 @media (max-width: 620px) {
   .spot-card { flex: 0 0 232px; }
   .reel-grid, .comp-grid, .tix-list { grid-template-columns: 1fr; }
@@ -1505,7 +1563,76 @@ window.AUSBOX_DATA = {
     "lat": -31.953,
     "lng": 115.779,
     "cancelled": true,
-    "note": "Marked cancelled: the venue (Perth HPC) lists this show as Cancelled. Do not promote tickets."
+    "note": "Marked cancelled: the venue (Perth HPC) lists this show as Cancelled. Do not promote tickets.",
+    "promo": {
+     "tagline": "Perth fight night: 'Cheeky' May returns against 'Uwee' Dib - a 12-fight professional card at Perth HPC.",
+     "countdown_iso": "2026-10-10T16:00:00+08:00",
+     "card": [
+      {
+       "bout": "Nathaniel 'Cheeky' May (23-4-0) vs Youssef 'Uwee' Dib (22-4-0)",
+       "meta": "Lightweight, headline bout",
+       "tag": "MAIN EVENT"
+      },
+      {
+       "bout": "Jude Grant (9-1-1) vs Hayden Emmerson (10-3-2)",
+       "meta": "Middleweight, co-feature",
+       "tag": "CO-MAIN"
+      },
+      {
+       "bout": "Floyd Masson vs Alivereti Kauyaca",
+       "meta": "6 rounds, non-title. Perth homecoming for Masson - his first Perth fight in six years.",
+       "tag": "UNDERCARD"
+      },
+      {
+       "bout": "Viviana Ruiz Corredor (10-3-0) vs Himanshi Raghav (7-2-0)",
+       "meta": "Female bout",
+       "tag": "UNDERCARD"
+      },
+      {
+       "bout": "Also named: Nort Beauchamp and Jamal Couling (Christchurch)",
+       "meta": "Opponents not published",
+       "tag": "UNDERCARD"
+      }
+     ],
+     "tickets_info": [
+      {
+       "desc": "Ringside A Reserved",
+       "price": "$366.60"
+      },
+      {
+       "desc": "Ringside B Reserved",
+       "price": "$315.63"
+      },
+      {
+       "desc": "A Reserved",
+       "price": "$181.98"
+      },
+      {
+       "desc": "A Reserved - Under 16s",
+       "price": "$141.20"
+      },
+      {
+       "desc": "B Reserved",
+       "price": "$110.62"
+      },
+      {
+       "desc": "B Reserved - Under 16s",
+       "price": "$78.42"
+      }
+     ],
+     "tickets_note": "Prices as published by the venue. Max 10 tickets per customer. Do not buy or travel until the card status is confirmed - the venue lists this show as cancelled.",
+     "venue": {
+      "doors": "Doors 3:00pm, first bell 4:00pm",
+      "parking": "Perth HPC (formerly HBF Stadium), Stephenson Avenue, Mount Claremont WA.",
+      "notes": "No passouts. Card only - no cash at outlets. Metal detectors may be used. Under 18s must be accompanied by an adult. Wheelchair bays in the upper grandstand behind blocks 203-206; accessible seating line 1300 446 925."
+     },
+     "facts": [
+      "Advertised as a 12-fight professional card.",
+      "Floyd Masson returns to Perth, where his professional career began in 2018 - he is coming off a world-title-eliminator loss to David Nyika.",
+      "Nathaniel May is a former Australian champion, WBO Oriental champion and IBO Intercontinental champion.",
+      "Youssef Dib comes from the Dib boxing dynasty and this is the biggest fight of his career."
+     ]
+    }
    },
    {
     "id": "tas-tbl-hobart-oct11",
@@ -1908,6 +2035,96 @@ window.AUSBOX_DATA = {
     "lat": 54.604,
     "lng": -5.916,
     "poster": "https://i2-prod.belfastlive.co.uk/article33520649.ece/ALTERNATES/s1200/0_GettyImages-2214414532.jpg"
+   },
+   {
+    "id": "nsw-gallen-asofa-solomona",
+    "title": "Paul Gallen vs Nelson Asofa-Solomona",
+    "date": "2026-11-06",
+    "start_time": "7:00pm AEDT (main card)",
+    "location": "Sydney NSW (venue to be announced)",
+    "category": "Professional / Crossover Heavyweight",
+    "promoter": "No Limit Boxing",
+    "tv": "MAIN EVENT PPV (Foxtel / Kayo) - $69.95",
+    "main_event": "Paul Gallen vs Nelson Asofa-Solomona, 5 rounds, heavyweight",
+    "undercard": "To be announced",
+    "tickets": "",
+    "website": "https://nolimitboxing.com.au/events",
+    "state": "NSW",
+    "lat": -33.8688,
+    "lng": 151.2093,
+    "promo": {
+     "tagline": "NRL heavyweights collide. The Cronulla legend comes out of retirement to face the Storm giant - Friday 6 November, live in Sydney.",
+     "countdown_iso": "2026-11-06T19:00:00+11:00",
+     "tape": [
+      {
+       "label": "Record",
+       "a": "16-2-1 (8 KO)",
+       "b": "3-0 (3 KO)"
+      },
+      {
+       "label": "Background",
+       "a": "Ex-Cronulla & NSW captain",
+       "b": "Ex-Melbourne Storm forward"
+      },
+      {
+       "label": "Fight shape",
+       "a": "Returning from retirement",
+       "b": "Unbeaten as a pro boxer"
+      },
+      {
+       "label": "Market odds",
+       "a": "$2.15 - $2.25",
+       "b": "$1.60 - $1.68 (favourite)"
+      }
+     ],
+     "card": [
+      {
+       "bout": "Paul Gallen vs Nelson Asofa-Solomona",
+       "meta": "5 rounds, heavyweight",
+       "tag": "MAIN EVENT"
+      },
+      {
+       "bout": "Undercard to be announced",
+       "meta": "No Limit Boxing says more announcements coming",
+       "tag": "TBC"
+      }
+     ],
+     "watch": [
+      {
+       "where": "MAIN EVENT pay-per-view",
+       "price": "$69.95",
+       "note": "Friday 6 November, 7:00pm AEDT. Order through Foxtel or Kayo Sports.",
+       "url": "https://www.mainevent.com.au/"
+      },
+      {
+       "where": "Kayo Sports",
+       "price": "$69.95",
+       "note": "No Kayo subscription needed to buy the single event.",
+       "url": "https://kayosports.com.au/"
+      },
+      {
+       "where": "In person - Sydney",
+       "price": "Tickets TBC",
+       "note": "Tickets not yet on sale. Pre-sale sign-up at nolimitboxing.com.au."
+      }
+     ],
+     "venue": {
+      "notes": "Venue to be announced - confirmed for Sydney. No Limit Boxing says the venue will be announced soon. NSW Government support via Destination NSW."
+     },
+     "facts": [
+      "Announced 22 September 2026 - a five-round heavyweight bout.",
+      "Gallen, 45, is a former Cronulla Sharks premiership captain and NSW State of Origin legend, returning from boxing retirement.",
+      "Asofa-Solomona, nicknamed 'Big Nasty', is roughly two metres tall and unbeaten as a professional boxer - wins over Latimore, Wallace and Burgess.",
+      "The card is promoted by No Limit Boxing and backed by the NSW Government through Destination NSW."
+     ],
+     "poll": {
+      "question": "Who wins?",
+      "options": [
+       "Paul Gallen",
+       "Nelson Asofa-Solomona"
+      ]
+     }
+    }
    }
   ],
   "recent": [
@@ -58557,6 +58774,26 @@ window.AUSBOX_DATA = {
       ev_mainEvent: "Main Event",
       ev_back: "← Back to Events",
       ev_noMap: "📍 Location listed above (map unavailable for this venue)",
+      ev_cd_days: "Days",
+      ev_cd_hours: "Hours",
+      ev_cd_mins: "Mins",
+      ev_cd_secs: "Secs",
+      ev_promo_videos: "Watch the Hype",
+      ev_promo_tape: "Tale of the Tape",
+      ev_promo_fightcard: "Full Fight Card",
+      ev_promo_tickets: "Ticket Prices",
+      ev_promo_watch: "How to Watch",
+      ev_promo_schedule: "Fight Week Schedule",
+      ev_promo_commentary: "Commentary Team",
+      ev_promo_quotes: "What They're Saying",
+      ev_promo_gallery: "Photo Gallery",
+      ev_promo_venue: "Venue & Getting There",
+      ev_promo_facts: "Did You Know?",
+      ev_promo_doors: "Doors",
+      ev_promo_parking: "Parking",
+      ev_promo_transport: "Public transport",
+      ev_promo_poll: "Who Wins?",
+      ev_promo_poll_note: "Your pick is saved on this device.",
       bx_next: "🔜 Next:",
       bx_last: "📼 Last:",
       bx_boxer: " boxer",
@@ -58811,6 +59048,26 @@ window.AUSBOX_DATA = {
       ev_mainEvent: "Evento Principal",
       ev_back: "← Volver a Eventos",
       ev_noMap: "📍 Ubicación listada arriba (mapa no disponible para este lugar)",
+      ev_cd_days: "Días",
+      ev_cd_hours: "Horas",
+      ev_cd_mins: "Min",
+      ev_cd_secs: "Seg",
+      ev_promo_videos: "Mira el hype",
+      ev_promo_tape: "Comparativa",
+      ev_promo_fightcard: "Cartelera completa",
+      ev_promo_tickets: "Precios de entradas",
+      ev_promo_watch: "Cómo verlo",
+      ev_promo_schedule: "Agenda de la semana",
+      ev_promo_commentary: "Equipo de comentaristas",
+      ev_promo_quotes: "Lo que dicen",
+      ev_promo_gallery: "Galería de fotos",
+      ev_promo_venue: "Sede y cómo llegar",
+      ev_promo_facts: "¿Sabías que?",
+      ev_promo_doors: "Apertura",
+      ev_promo_parking: "Estacionamiento",
+      ev_promo_transport: "Transporte público",
+      ev_promo_poll: "¿Quién gana?",
+      ev_promo_poll_note: "Tu elección se guarda en este dispositivo.",
       bx_next: "🔜 Próximo:",
       bx_last: "📼 Último:",
       bx_boxer: " boxeador",
@@ -59065,6 +59322,26 @@ window.AUSBOX_DATA = {
       ev_mainEvent: "Événement Principal",
       ev_back: "← Retour aux Événements",
       ev_noMap: "📍 Lieu indiqué ci-dessus (carte indisponible pour ce lieu)",
+      ev_cd_days: "Jours",
+      ev_cd_hours: "Heures",
+      ev_cd_mins: "Min",
+      ev_cd_secs: "Sec",
+      ev_promo_videos: "Regarder le hype",
+      ev_promo_tape: "Comparatif",
+      ev_promo_fightcard: "Carte complète des combats",
+      ev_promo_tickets: "Prix des billets",
+      ev_promo_watch: "Comment regarder",
+      ev_promo_schedule: "Programme de la semaine",
+      ev_promo_commentary: "Équipe de commentateurs",
+      ev_promo_quotes: "Ce qu'ils disent",
+      ev_promo_gallery: "Galerie photos",
+      ev_promo_venue: "Lieu et accès",
+      ev_promo_facts: "Le saviez-vous ?",
+      ev_promo_doors: "Ouverture",
+      ev_promo_parking: "Stationnement",
+      ev_promo_transport: "Transports en commun",
+      ev_promo_poll: "Qui va gagner ?",
+      ev_promo_poll_note: "Votre choix est enregistré sur cet appareil.",
       bx_next: "🔜 Prochain :",
       bx_last: "📼 Dernier :",
       bx_boxer: " boxeur",
@@ -59319,6 +59596,26 @@ window.AUSBOX_DATA = {
       ev_mainEvent: "Pangunahing Laban",
       ev_back: "← Bumalik sa Events",
       ev_noMap: "📍 Nakalagay ang lokasyon sa itaas (walang mapa para sa lugar na ito)",
+      ev_cd_days: "Araw",
+      ev_cd_hours: "Oras",
+      ev_cd_mins: "Min",
+      ev_cd_secs: "Seg",
+      ev_promo_videos: "Panoorin ang hype",
+      ev_promo_tape: "Tale of the Tape",
+      ev_promo_fightcard: "Buong Fight Card",
+      ev_promo_tickets: "Presyo ng Tiket",
+      ev_promo_watch: "Paano Panoorin",
+      ev_promo_schedule: "Iskedyul ng Fight Week",
+      ev_promo_commentary: "Commentary Team",
+      ev_promo_quotes: "Ang Sinasabi Nila",
+      ev_promo_gallery: "Photo Gallery",
+      ev_promo_venue: "Venue at Pagpunta",
+      ev_promo_facts: "Alam Mo Ba?",
+      ev_promo_doors: "Pagbukas",
+      ev_promo_parking: "Paradahan",
+      ev_promo_transport: "Pampublikong transportasyon",
+      ev_promo_poll: "Sino ang Mananalo?",
+      ev_promo_poll_note: "Naka-save ang pinili mo sa device na ito.",
       bx_next: "🔜 Susunod:",
       bx_last: "📼 Huling:",
       bx_boxer: " boksingero",
@@ -60020,6 +60317,8 @@ window.AUSBOX_DATA = {
     if (ev.poster) {
       html += '<div class="event-detail-poster"><img src="' + esc(ev.poster) + '" alt="' + esc(ev.title) + ' poster" loading="lazy"></div>';
     }
+    // Rich fight-week promo block (tagline, countdown, card, tickets, videos, gallery, quotes, poll)
+    html += evPromoHTML(ev);
     // Grid fields
     var fields = '';
     fields += pfField(T("ev_date"), esc(fmtDate(ev.date)), false);
@@ -60063,12 +60362,212 @@ window.AUSBOX_DATA = {
     document.getElementById("event-detail-content").innerHTML = html;
     panel.classList.add("open");
     document.body.style.overflow = "hidden";
+    startEvCountdown(document.getElementById("event-detail-content"));
   }
+  /* ============ Event promo block (rich fight-week promotion) ============ */
+  var EV_CD_TIMER = null;
+
+  function evCdCells(targetMs) {
+    var diff = targetMs - Date.now();
+    if (diff < 0) diff = 0;
+    var s = Math.floor(diff / 1000);
+    var d = Math.floor(s / 86400); s -= d * 86400;
+    var h = Math.floor(s / 3600); s -= h * 3600;
+    var m = Math.floor(s / 60); s -= m * 60;
+    return [[d, T("ev_cd_days")], [h, T("ev_cd_hours")], [m, T("ev_cd_mins")], [s, T("ev_cd_secs")]];
+  }
+  function evCdHTML(targetMs) {
+    return evCdCells(targetMs).map(function (c) {
+      return '<div class="ev-cd-cell"><div class="ev-cd-num">' + c[0] + '</div><div class="ev-cd-lab">' + esc(c[1]) + '</div></div>';
+    }).join("");
+  }
+  function evPollKey(id) { return "abh_ev_poll_" + id; }
+  function evPollGet(id) {
+    try { var r = localStorage.getItem(evPollKey(id)); return r ? JSON.parse(r) : null; } catch (e) { return null; }
+  }
+  function evPollSet(id, val) {
+    try { localStorage.setItem(evPollKey(id), JSON.stringify(val)); } catch (e) { }
+  }
+
+  function evPromoHTML(ev) {
+    var p = ev.promo;
+    if (!p) return "";
+    var h = '<div class="ev-promo">';
+    if (p.tagline) h += '<div class="ev-promo-tagline">' + esc(p.tagline) + '</div>';
+
+    // Countdown
+    var cdIso = p.countdown_iso || (ev.date ? ev.date + "T19:00:00" : "");
+    if (cdIso) {
+      var tgt = Date.parse(cdIso);
+      if (!isNaN(tgt) && tgt > Date.now()) {
+        h += '<div class="ev-countdown" data-cd="' + tgt + '">' + evCdHTML(tgt) + '</div>';
+      }
+    }
+
+    // Hype videos
+    if (p.videos && p.videos.length) {
+      h += '<div class="ev-promo-sec"><h4>🎬 ' + T("ev_promo_videos") + '</h4><div class="ev-video-grid">' +
+        p.videos.map(function (v) {
+          var thumb = v.thumb || ("https://i.ytimg.com/vi/" + esc(v.id) + "/hqdefault.jpg");
+          return '<div class="ev-video" data-yt="' + esc(v.id) + '" data-vtitle="' + esc(v.title || "") + '">' +
+            '<img src="' + esc(thumb) + '" alt="' + esc(v.title || "") + '" loading="lazy">' +
+            '<div class="ev-video-play">▶</div>' +
+            '<div class="ev-video-title">' + esc(v.title || "") + '</div></div>';
+        }).join("") + '</div></div>';
+    }
+
+    // Tale of the tape
+    if (p.tape && p.tape.length) {
+      h += '<div class="ev-promo-sec"><h4>📏 ' + T("ev_promo_tape") + '</h4>' +
+        p.tape.map(function (r) {
+          return '<div class="ev-tape-row"><div class="ev-tape-a">' + esc(r.a) + '</div>' +
+            '<div class="ev-tape-lab">' + esc(r.label) + '</div>' +
+            '<div class="ev-tape-b">' + esc(r.b) + '</div></div>';
+        }).join("") + '</div>';
+    }
+
+    // Fight card
+    if (p.card && p.card.length) {
+      h += '<div class="ev-promo-sec"><h4>🥊 ' + T("ev_promo_fightcard") + '</h4>' +
+        p.card.map(function (b) {
+          return '<div class="ev-bout"><div class="ev-bout-body">' +
+            '<div class="ev-bout-main">' + linkNames(b.bout || "") + '</div>' +
+            (b.meta ? '<div class="ev-bout-meta">' + esc(b.meta) + '</div>' : "") +
+            '</div>' + (b.tag ? '<span class="ev-bout-badge">' + esc(b.tag) + '</span>' : "") + '</div>';
+        }).join("") + '</div>';
+    }
+
+    // Tickets
+    if (p.tickets_info && p.tickets_info.length) {
+      h += '<div class="ev-promo-sec"><h4>🎟 ' + T("ev_promo_tickets") + '</h4><table class="ev-tix-table">' +
+        p.tickets_info.map(function (t) {
+          return '<tr><td>' + esc(t.desc) + '</td><td>' + esc(t.price) + '</td></tr>';
+        }).join("") + '</table>' +
+        (p.tickets_note ? '<div class="ev-poll-note">' + esc(p.tickets_note) + '</div>' : "") + '</div>';
+    }
+
+    // How to watch
+    if (p.watch && p.watch.length) {
+      h += '<div class="ev-promo-sec"><h4>📺 ' + T("ev_promo_watch") + '</h4>' +
+        p.watch.map(function (w) {
+          var line = '<div class="ev-bout-main">' + esc(w.where) + (w.price ? ' · <span style="color:#ffe066">' + esc(w.price) + '</span>' : "") + '</div>';
+          var meta = w.note ? '<div class="ev-bout-meta">' + esc(w.note) + '</div>' : "";
+          if (w.url) return '<a href="' + esc(w.url) + '" target="_blank" rel="noopener" style="text-decoration:none;display:block;padding:9px 0;border-top:1px solid var(--line)">' + line + meta + '</a>';
+          return '<div style="padding:9px 0;border-top:1px solid var(--line)">' + line + meta + '</div>';
+        }).join("") + '</div>';
+    }
+
+    // Fight-week schedule
+    if (p.schedule && p.schedule.length) {
+      h += '<div class="ev-promo-sec"><h4>🗓 ' + T("ev_promo_schedule") + '</h4>' +
+        p.schedule.map(function (s) {
+          return '<div class="ev-bout"><div class="ev-bout-body"><div class="ev-bout-main">' + esc(s.label) + '</div>' +
+            '<div class="ev-bout-meta">' + esc(s.when || "") + (s.where ? ' · ' + esc(s.where) : "") + '</div></div></div>';
+        }).join("") + '</div>';
+    }
+
+    // Commentary
+    if (p.commentators && p.commentators.length) {
+      h += '<div class="ev-promo-sec"><h4>🎙 ' + T("ev_promo_commentary") + '</h4>' +
+        p.commentators.map(function (c) { return '<div class="ev-fact">' + esc(c) + '</div>'; }).join("") + '</div>';
+    }
+
+    // Quotes
+    if (p.quotes && p.quotes.length) {
+      h += '<div class="ev-promo-sec"><h4>💬 ' + T("ev_promo_quotes") + '</h4>' +
+        p.quotes.map(function (q) {
+          return '<div class="ev-quote"><div class="ev-quote-text">&ldquo;' + esc(q.text) + '&rdquo;</div>' +
+            (q.who ? '<div class="ev-quote-who">— ' + esc(q.who) + '</div>' : "") +
+            (q.source ? '<div class="ev-quote-src">' + esc(q.source) + '</div>' : "") + '</div>';
+        }).join("") + '</div>';
+    }
+
+    // Gallery
+    if (p.gallery && p.gallery.length) {
+      h += '<div class="ev-promo-sec"><h4>📸 ' + T("ev_promo_gallery") + '</h4><div class="ev-gallery">' +
+        p.gallery.map(function (g) {
+          return '<a href="' + esc(g) + '" target="_blank" rel="noopener"><img src="' + esc(g) + '" alt="" loading="lazy"></a>';
+        }).join("") + '</div></div>';
+    }
+
+    // Venue / getting there
+    if (p.venue) {
+      var v = p.venue, rows = "";
+      if (v.doors) rows += '<div class="ev-bout"><div class="ev-bout-body"><div class="ev-bout-main">' + T("ev_promo_doors") + '</div><div class="ev-bout-meta">' + esc(v.doors) + '</div></div></div>';
+      if (v.parking) rows += '<div class="ev-bout"><div class="ev-bout-body"><div class="ev-bout-main">' + T("ev_promo_parking") + '</div><div class="ev-bout-meta">' + esc(v.parking) + '</div></div></div>';
+      if (v.transport) rows += '<div class="ev-bout"><div class="ev-bout-body"><div class="ev-bout-main">' + T("ev_promo_transport") + '</div><div class="ev-bout-meta">' + esc(v.transport) + '</div></div></div>';
+      if (v.notes) rows += '<div class="ev-bout"><div class="ev-bout-body"><div class="ev-bout-meta">' + esc(v.notes) + '</div></div></div>';
+      if (rows) h += '<div class="ev-promo-sec"><h4>📍 ' + T("ev_promo_venue") + '</h4>' + rows + '</div>';
+    }
+
+    // Facts
+    if (p.facts && p.facts.length) {
+      h += '<div class="ev-promo-sec"><h4>⭐ ' + T("ev_promo_facts") + '</h4>' +
+        p.facts.map(function (f) { return '<div class="ev-fact">' + esc(f) + '</div>'; }).join("") + '</div>';
+    }
+
+    // Poll
+    if (p.poll && p.poll.options && p.poll.options.length) {
+      var pick = evPollGet(ev.id);
+      h += '<div class="ev-promo-sec" data-poll-id="' + esc(ev.id) + '"><h4>🗳 ' + esc(p.poll.question || T("ev_promo_poll")) + '</h4>' +
+        '<div class="ev-poll-opts">' + p.poll.options.map(function (o, i) {
+          return '<button class="ev-poll-btn' + (pick === i ? ' on' : '') + '" data-poll-opt="' + i + '">' + esc(o) + '</button>';
+        }).join("") + '</div>' +
+        '<div class="ev-poll-note">' + (pick != null ? '✅ ' + esc(p.poll.options[pick]) + ' — ' : '') + T("ev_promo_poll_note") + '</div></div>';
+    }
+
+    h += '</div>';
+    return h;
+  }
+
+  function startEvCountdown(root) {
+    if (EV_CD_TIMER) { clearInterval(EV_CD_TIMER); EV_CD_TIMER = null; }
+    var box = root.querySelector ? root.querySelector("[data-cd]") : null;
+    if (!box) return;
+    var tgt = parseInt(box.getAttribute("data-cd"), 10);
+    if (isNaN(tgt)) return;
+    var tick = function () {
+      var b = document.querySelector(".ev-countdown[data-cd]");
+      if (!b) { if (EV_CD_TIMER) { clearInterval(EV_CD_TIMER); EV_CD_TIMER = null; } return; }
+      b.innerHTML = evCdHTML(tgt);
+    };
+    tick();
+    EV_CD_TIMER = setInterval(tick, 1000);
+  }
+
+  function initEventPromo() {
+    var panel = document.getElementById("event-detail");
+    if (!panel) return;
+    panel.addEventListener("click", function (e) {
+      var vid = e.target.closest ? e.target.closest(".ev-video") : null;
+      if (vid && !vid.querySelector("iframe")) {
+        var yt = vid.getAttribute("data-yt");
+        if (yt) {
+          vid.innerHTML = '<iframe src="https://www.youtube.com/embed/' + esc(yt) + '?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        }
+        return;
+      }
+      var btn = e.target.closest ? e.target.closest("[data-poll-opt]") : null;
+      if (btn) {
+        var wrap = btn.closest("[data-poll-id]");
+        if (!wrap) return;
+        var id = wrap.getAttribute("data-poll-id");
+        var idx = parseInt(btn.getAttribute("data-poll-opt"), 10);
+        evPollSet(id, idx);
+        var btns = wrap.querySelectorAll(".ev-poll-btn");
+        for (var i = 0; i < btns.length; i++) btns[i].classList.toggle("on", i === idx);
+        var note = wrap.querySelector(".ev-poll-note");
+        if (note) note.textContent = T("ev_promo_poll_note");
+      }
+    });
+  }
+
   function closeEventDetail() {
     var panel = document.getElementById("event-detail");
     if (!panel) return;
     panel.classList.remove("open");
     document.body.style.overflow = "";
+    if (EV_CD_TIMER) { clearInterval(EV_CD_TIMER); EV_CD_TIMER = null; }
   }
   function findEventById(id) {
     if (!DATA || !DATA.events) return null;
@@ -61104,6 +61603,7 @@ window.AUSBOX_DATA = {
     initPubs();
     initFighterProfile();
     initEventDetail();
+    initEventPromo();
     initGlobalSearch();
   }
 
