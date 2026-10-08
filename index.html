@@ -569,41 +569,15 @@ h2.reading, h3.reading, h4.reading, p.reading, li.reading, .train-desc.reading {
 }
 #rank-division:focus { border-color: var(--gold); }
 
-/* Travel, Logistics & Medical Compliance */
-.med-req {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 10px 12px;
-  margin: 10px 0;
-  background: var(--bg2);
-}
-.med-track { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-.med-date {
-  background: var(--card); color: var(--text);
-  border: 1px solid var(--line); border-radius: 8px;
-  padding: 6px 10px; font-size: 13px;
-  color-scheme: dark; outline: none;
-}
-.med-date:focus { border-color: var(--gold); }
-.weight-log-form, .board-form { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 14px; }
-.weight-log-form input, .board-form input, .board-form select {
-  background: var(--card); color: var(--text);
-  border: 1px solid var(--line); border-radius: 8px;
-  padding: 9px 12px; font-size: 14px; outline: none; flex: 1; min-width: 130px;
-  color-scheme: dark; max-width: 100%;
-}
-.weight-log-form input:focus, .board-form input:focus, .board-form select:focus { border-color: var(--gold); }
-.board-form select { flex: 0 0 auto; min-width: 130px; cursor: pointer; }
-.board-form .btn { flex: 0 0 auto; }
-#weight-tips, .pattern-list { list-style: none; margin-top: 10px; }
-#weight-tips li, .pattern-list li {
+
+.pattern-list { list-style: none; margin-top: 10px; }
+.pattern-list li {
   color: var(--muted); font-size: 13.5px;
   padding: 6px 0 6px 18px; position: relative;
 }
-#weight-tips li::before, .pattern-list li::before {
+.pattern-list li::before {
   content: "▸"; position: absolute; inset-inline-start: 0; color: var(--red);
 }
-#travel-hubs { margin: 4px 0 12px; }
 
 /* Gyms & Sparring Finder */
 .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
@@ -1109,7 +1083,6 @@ h3 { color: #ffd166; }
   <button class="tab" data-tab="training" data-i18n="tab_training">🥊 Training</button>
   <button class="tab" data-tab="rankings" data-i18n="tab_rankings">🏅 Rankings</button>
   <button class="tab" data-tab="analytics" data-i18n="tab_analytics">📊 Analytics</button>
-  <button class="tab" data-tab="travel" data-i18n="tab_travel">🛩 Travel</button>
   <button class="tab" data-tab="gyms" data-i18n="tab_gyms">🥊 Gyms</button>
   <button class="tab" data-tab="reels">🎬 Reels &amp; Comps</button>
 </nav>
@@ -1398,48 +1371,6 @@ h3 { color: #ffd166; }
       <p class="train-desc" id="lineal-note"></p>
       <div id="lineal-divisions" class="mentions"></div>
       <div id="lineal-tree"></div>
-    </div>
-  </section>
-
-  <!-- TRAVEL, LOGISTICS & MEDICAL COMPLIANCE -->
-  <section id="tab-travel" class="tab-panel">
-    <h2 data-i18n="trv_title">Travel, Logistics & Medical Compliance</h2>
-    <p class="sub-note" id="travel-note"></p>
-
-    <div class="train-card">
-      <h3 data-i18n="trv_med">🩺 State Medical Tracker</h3>
-      <p class="train-desc" id="travel-medical-intro"></p>
-      <div id="travel-medical" class="card-list"></div>
-    </div>
-
-    <div class="train-card">
-      <h3 data-i18n="trv_weight">⚖️ Interstate Weight Tracker</h3>
-      <p class="train-desc" id="travel-weight-note"></p>
-      <div class="weight-log-form">
-        <input id="weight-date" type="date" aria-label="Date">
-        <input id="weight-kg" type="number" inputmode="decimal" step="0.1" min="30" max="200" placeholder="Weight (kg)" data-i18n-ph="trv_weightPh" aria-label="Weight in kg">
-        <button class="btn primary" id="weight-add" data-i18n="trv_log">+ Log weight</button>
-      </div>
-      <div id="weight-trend" class="card-list"></div>
-      <ul id="weight-tips" class="pattern-list"></ul>
-    </div>
-
-    <div class="train-card">
-      <h3 data-i18n="trv_coord">🧭 Regional Travel Coordinator</h3>
-      <p class="train-desc" id="travel-board-note"></p>
-      <div class="mentions" id="travel-hubs"></div>
-      <div class="board-form">
-        <input id="board-who" placeholder="Who / where from (e.g. Townsville → Sydney)" aria-label="Who and route" maxlength="60">
-        <select id="board-type" aria-label="Post type">
-          <option data-i18n="trv_carpool">Carpool</option>
-          <option data-i18n="trv_acc">Accommodation</option>
-          <option data-i18n="trv_gym">Gym space</option>
-          <option data-i18n="trv_other">Other</option>
-        </select>
-        <input id="board-detail" placeholder="What are you organising?" aria-label="Details" maxlength="120">
-        <button class="btn primary" id="board-post" data-i18n="trv_post">📌 Post on board</button>
-      </div>
-      <div id="travel-board" class="card-list"></div>
     </div>
   </section>
 
@@ -12345,242 +12276,6 @@ window.AUSBOX_DATA = {
      "amateur": "17-1 amateur",
      "pro": "Rising amateur",
      "path": "Elite record early — 17 wins and a single loss as a teen flyweight. One to track."
-    }
-   ]
-  }
- },
- "travel": {
-  "updated": "2026-08-30",
-  "note": "Travel, logistics and medical compliance for Australian combat sport — state medical lockers, interstate weight tracking and a regional travel notice board.",
-  "medical": {
-   "intro": "Digital locker for mandatory state combat-sports requirements. Tap a state, add your own certificate/serology dates, and the app tracks what's current and what's about to expire. Always confirm with the authority — requirements change.",
-   "states": [
-    {
-     "state": "NSW",
-     "authority": "Combat Sports Authority NSW (Office of Sport)",
-     "url": "https://www.sport.nsw.gov.au/combatsports/medical",
-     "act": "Combat Sports Act 2013",
-     "requirements": [
-      {
-       "name": "Certificate of Fitness",
-       "frequency": "Annual — no later than 12 months after the previous",
-       "detail": "GP examination plus Health Screening Questionnaire, signed in the approved form.",
-       "url": "https://www.sport.nsw.gov.au/sites/default/files/2021-04/csa_form_certificate_of_fitness_for_combat_sports.pdf"
-      },
-      {
-       "name": "Serological Clearance",
-       "frequency": "Every 6 months (18+); every 12 months (under 18)",
-       "detail": "Blood tests: HIV Ag/Ab, HBsAg, HCV Ab (PCR if positive). Authority keeps the certificate, not results.",
-       "url": "https://www.sport.nsw.gov.au/sites/default/files/2021-04/csa_form_serology_clearance_certificate_s7_oct_2014.pdf"
-      },
-      {
-       "name": "Ringside medical",
-       "frequency": "Before and after every contest",
-       "detail": "Attending Medical Practitioner examines at weigh-in/contest; medical suspensions go in your Medical Record Book.",
-       "url": "https://www.sport.nsw.gov.au/combatsports/medical"
-      }
-     ],
-     "extra": "Also required to register: NSW combatant registration in your class. Concussion/head-injury info sheet updated 2025."
-    },
-    {
-     "state": "VIC",
-     "authority": "Professional Boxing and Combat Sports Board (DJSIR)",
-     "url": "https://djsir.vic.gov.au/combat-sports/applications/contestant-applications",
-     "act": "Professional Boxing and Combat Sports Act",
-     "requirements": [
-      {
-       "name": "Certificate of Fitness",
-       "frequency": "Dated no earlier than 14 days before application",
-       "detail": "Signed by a medical practitioner, completed in the Board's approved form.",
-       "url": "https://djsir.vic.gov.au/__data/assets/word_doc/0017/2403062/Professional-Boxing-and-Combat-Sports-Board_Contestant-Certificate-of-Fitness.docx"
-      },
-      {
-       "name": "Blood testing form",
-       "frequency": "Dated no earlier than 6 months before application",
-       "detail": "Blood tests signed off by a medical practitioner in the Board's form.",
-       "url": "https://djsir.vic.gov.au/__data/assets/word_doc/0018/2403063/Professional-Boxing-and-Combat-Sports-Board-Contestant-Blood-Testing-Guide-and-Form-Jan-2026.docx"
-      },
-      {
-       "name": "Registration",
-       "frequency": "Valid 3 years, renewable",
-       "detail": "18+, online application, concussion education video, headshot photo, certified ID. Trainer/matchmaker recommendation required for new applicants.",
-       "url": "https://combatsports-licences.djsir.vic.gov.au/s/login/SelfRegister"
-      }
-     ],
-     "extra": "Contestant registration valid 3 years. Renewals skip the trainer recommendation and photo/ID unless stale."
-    },
-    {
-     "state": "WA",
-     "authority": "Combat Sports Commission (CITS)",
-     "url": "https://www.cits.wa.gov.au/sport-and-recreation/combat-sports-commission/medical-practitioners",
-     "act": "Combat Sports Act 1987",
-     "requirements": [
-      {
-       "name": "Certificate of Fitness (CoF)",
-       "frequency": "Valid 12 months",
-       "detail": "Requires a serology (blood) test; the combined CoF form covers both fitness and serology.",
-       "url": "https://sitefinitypublicblobs.blob.core.windows.net/prod-blob/docs/default-source/sport-and-recreation/combat-sports-commission/certificate-of-fitness-2013d9735dd1254640ee82816954ad94767b.pdf?sfvrsn=d8ba5534_33"
-      },
-      {
-       "name": "Serology clearance",
-       "frequency": "Valid 6 months — ongoing testing",
-       "detail": "Interim Serology Clearance form when a new CoF isn't needed. Don't send lab results.",
-       "url": "https://sitefinitypublicblobs.blob.core.windows.net/prod-blob/docs/default-source/sport-and-recreation/combat-sports-commission/serology-clearance-report-form---2024-final.pdf?sfvrsn=5c969d12_7"
-      },
-      {
-       "name": "Therapeutic Use Exemption",
-       "frequency": "As needed (anti-doping)",
-       "detail": "TUE permits otherwise-prohibited substances for legitimate medical purposes. Check Global DRO first.",
-       "url": "https://www.globaldro.com/AU/search"
-      },
-      {
-       "name": "Ringside Medical Practitioner",
-       "frequency": "Every contest",
-       "detail": "A bout cannot proceed without an approved RMP ringside — pre-contest, during, and post-contest.",
-       "url": "https://www.cits.wa.gov.au/sport-and-recreation/combat-sports-commission/medical-practitioners"
-      }
-     ],
-     "extra": "Contact: Combat Sports Commission, 246 Vincent St Leederville, combatsport@cits.wa.gov.au, (08) 6552 1604."
-    },
-    {
-     "state": "SA",
-     "authority": "Office for Recreation, Sport and Racing",
-     "url": "https://orsr.sa.gov.au/sector-success/boxing-and-martial-arts",
-     "act": "Boxing and Martial Arts Act",
-     "requirements": [
-      {
-       "name": "Annual medical examination",
-       "frequency": "Annual — industry standard",
-       "detail": "Completed on the ORSR medical examination form with your doctor (not a strict legislative requirement, but standard practice).",
-       "url": "https://orsr.sa.gov.au/sector-success/boxing-and-martial-arts"
-      },
-      {
-       "name": "Contestant registration",
-       "frequency": "Per contest/event",
-       "detail": "Registration with the ORSR to compete in a professional or public boxing contest. Approx. $135 fee, plus medical certificate.",
-       "url": "https://ablis.business.gov.au/service/sa/boxing-and-martial-art-contestant-registration/564"
-      }
-     ],
-     "extra": "ORSR phone 1300 714 990. Clinics booked by calling (08) 8244 2850 for the medical exam."
-    },
-    {
-     "state": "QLD",
-     "authority": "Boxing Queensland Inc / local event approval",
-     "url": "https://www.boxingqueenslandinc.org/",
-     "act": "State regulation via event permits",
-     "requirements": [
-      {
-       "name": "Annual medical & bloods",
-       "frequency": "Check with the promoter/body for each event",
-       "detail": "QLD amateur/pro events typically require a current medical certificate and blood screening before contest. Requirements sit with the approving body for the event.",
-       "url": "https://www.boxingqueenslandinc.org/"
-      },
-      {
-       "name": "Event approval",
-       "frequency": "Per event",
-       "detail": "Amateur events sanctioned through Boxing Queensland; pro events approved through the relevant state authority.",
-       "url": "https://www.boxingqueenslandinc.org/"
-      }
-     ],
-     "extra": "Confirm with the promoter before travelling — QLD requirements are set per event/approving body."
-    },
-    {
-     "state": "TAS",
-     "authority": "Combat Sports Tasmania (Hobart Boxing League)",
-     "url": "https://www.boxingtas.org.au/",
-     "act": "Tasmanian combat sports legislation",
-     "requirements": [
-      {
-       "name": "Medical & bloods before every contest",
-       "frequency": "Every contest",
-       "detail": "Tasmanian legislation requires ALL boxers to hold current medical and blood results before competing — no exceptions, even interstate visitors.",
-       "url": "https://www.boxingtas.org.au/"
-      }
-     ],
-     "extra": "Interstate boxers: bring your certificates and bloods — TAS checks every fighter at weigh-in."
-    },
-    {
-     "state": "NT",
-     "authority": "NT Sport and Recreation — combat sports",
-     "url": "https://www.boxing.org.au/",
-     "act": "Territory regulation",
-     "requirements": [
-      {
-       "name": "Check with event body",
-       "frequency": "Per event",
-       "detail": "NT contests follow national Boxing Australia standards — confirm medical/blood requirements with the event organiser.",
-       "url": "https://www.boxing.org.au/"
-      }
-     ],
-     "extra": "King of the Ring Darwin events are the main NT pro stage — ask the promoter for the medical checklist early."
-    },
-    {
-     "state": "ACT",
-     "authority": "ACT Boxing / Boxing Australia",
-     "url": "https://www.boxing.org.au/",
-     "act": "Territory regulation",
-     "requirements": [
-      {
-       "name": "Check with event body",
-       "frequency": "Per event",
-       "detail": "ACT contests follow national Boxing Australia standards — confirm medical/blood requirements with the event organiser.",
-       "url": "https://www.boxing.org.au/"
-      }
-     ],
-     "extra": "AIS Elite Champs (Nov 25) run under Boxing Australia rules — standard AU medicals apply."
-    }
-   ]
-  },
-  "weight": {
-   "note": "Safe cuts before flying across time zones. Track your weight here so you can see the trend, cut slowly, and show officials you arrived in control.",
-   "tips": [
-    "Cut no more than ~1.5% of bodyweight per week — crash cuts wreck performance and can fail medicals.",
-    "For cross-timezone bouts, arrive 2-3 days early, weigh in, then rehydrate properly before fight night.",
-    "Fly carrying the right fuel: electrolyte drinks, a scale, and your state certificates (see Medical Locker).",
-    "Log every morning weight so you can see the curve — and prove it to your coach if the cut goes sideways."
-   ]
-  },
-  "travel": {
-   "note": "Notice board for regional fighters — share carpools, split accommodation, and find local gym space when travelling to the metro fight hubs (Sydney, Melbourne, Brisbane, Perth, Gold Coast).",
-   "hubs": [
-    {
-     "city": "Sydney",
-     "note": "NSW fight hub — events at Horden Pavilion, ICC, and major local shows."
-    },
-    {
-     "city": "Melbourne",
-     "note": "VIC fight hub — events across the CBD and suburban venues."
-    },
-    {
-     "city": "Brisbane / Gold Coast",
-     "note": "QLD fight hub — big No Limit & promoter cards."
-    },
-    {
-     "city": "Perth",
-     "note": "WA fight hub — events at Metro City and HBF Stadium."
-    }
-   ],
-   "seed_boards": [
-    {
-     "who": "Townsville → Sydney (Sep)",
-     "type": "Carpool",
-     "detail": "Two 75kg lads driving down for the Sep NSW shows. Room for 1 more — split fuel 3 ways.",
-     "region": "North QLD",
-     "contact": "dm on the hub"
-    },
-    {
-     "who": "Broome → Perth (Oct)",
-     "type": "Gym space",
-     "detail": "Travelling for May vs Dib (Oct 10, Perth HPC). Looking for a gym to sharpen in — light sparring welcome.",
-     "region": "Outback WA",
-     "contact": "dm on the hub"
-    },
-    {
-     "who": "Cairns → Brisbane",
-     "type": "Accommodation",
-     "detail": "Split a room for the QLD state title weekend. $70/night each, twin share.",
-     "region": "North QLD",
-     "contact": "dm on the hub"
     }
    ]
   }
@@ -62306,7 +62001,6 @@ window.AUSBOX_DATA = {
       tab_training: "🥊 Training",
       tab_rankings: "🏅 Rankings",
       tab_analytics: "📊 Analytics",
-      tab_travel: "🛩 Travel",
       tab_gyms: "🥊 Gyms",
       tab_pubs: "🍻 Pubs & Clubs",
       tab_worldtv: "🌍 World TV",
@@ -62370,17 +62064,6 @@ window.AUSBOX_DATA = {
       an_matrixSearch: "🔍 Search fighters by name, record or division…",
       an_punch: "💥 Punch Stats Archive",
       an_lineal: "👑 The \"Lineal\" Title Tracker",
-      trv_title: "Travel, Logistics & Medical Compliance",
-      trv_med: "🩺 State Medical Tracker",
-      trv_weight: "⚖️ Interstate Weight Tracker",
-      trv_weightPh: "Weight (kg)",
-      trv_log: "+ Log weight",
-      trv_coord: "🧭 Regional Travel Coordinator",
-      trv_carpool: "Carpool",
-      trv_acc: "Accommodation",
-      trv_gym: "Gym space",
-      trv_other: "Other",
-      trv_post: "📌 Post on board",
       gy_title: "🥊 Gyms & Sparring Finder",
       gy_dir: "🏋️ Gym Directory",
       gy_dirDesc: "Registered boxing clubs from the official state body lists — find a gym near you, or when you're travelling interstate.",
@@ -62510,13 +62193,6 @@ window.AUSBOX_DATA = {
       pub_allStatesChip: "All states",
       gy_yourPost: "Your post",
       gy_noGymPosts: "No sparring posts yet — put your name up and find partners. 🥊",
-      trv_contact: "Contact:",
-      trv_yourPost: "Your post",
-      trv_remove: "🗑 Remove",
-      trv_officialForm: "Official form ↗",
-      trv_authoritySite: "Authority site ↗",
-      trv_noPostsTravel: "No posts yet — be the first to organise a carpool, room-share or gym space. 📌",
-      trv_noWeights: "No weights logged yet — add your morning weight above to start the trend. ⚖️",
       learnMore: "Learn more →",
       websiteBtn: "🌐 Website",
       socialBtn: "📱 Social",
@@ -62720,7 +62396,6 @@ window.AUSBOX_DATA = {
       tab_training: "🥊 Entrenamiento",
       tab_rankings: "🏅 Rankings",
       tab_analytics: "📊 Analítica",
-      tab_travel: "🛩 Viajes",
       tab_gyms: "🥊 Gimnasios",
       tab_pubs: "🍻 Pubs y Clubes",
       tab_worldtv: "🌍 TV Mundial",
@@ -62784,17 +62459,6 @@ window.AUSBOX_DATA = {
       an_matrixSearch: "🔍 Buscar peleadores por nombre, récord o división…",
       an_punch: "💥 Archivo de Estadísticas de Golpes",
       an_lineal: "👑 Seguimiento del Título \"Lineal\"",
-      trv_title: "Viajes, Logística y Cumplimiento Médico",
-      trv_med: "🩺 Seguimiento Médico Estatal",
-      trv_weight: "⚖️ Seguimiento de Peso Interestatal",
-      trv_weightPh: "Peso (kg)",
-      trv_log: "+ Registrar peso",
-      trv_coord: "🧭 Coordinador de Viajes Regional",
-      trv_carpool: "Coche compartido",
-      trv_acc: "Alojamiento",
-      trv_gym: "Espacio de gimnasio",
-      trv_other: "Otro",
-      trv_post: "📌 Publicar en el tablón",
       gy_title: "🥊 Gimnasios y Buscador de Sparring",
       gy_dir: "🏋️ Directorio de Gimnasios",
       gy_dirDesc: "Clubes de boxeo registrados en las listas oficiales de los organismos estatales — encuentra un gimnasio cerca de ti o cuando viajas entre estados.",
@@ -62924,13 +62588,6 @@ window.AUSBOX_DATA = {
       pub_allStatesChip: "Todos los estados",
       gy_yourPost: "Tu publicación",
       gy_noGymPosts: "Aún no hay publicaciones de sparring — anota tu nombre y encuentra compañeros. 🥊",
-      trv_contact: "Contacto:",
-      trv_yourPost: "Tu publicación",
-      trv_remove: "🗑 Eliminar",
-      trv_officialForm: "Formulario oficial ↗",
-      trv_authoritySite: "Sitio del organismo ↗",
-      trv_noPostsTravel: "Aún no hay publicaciones — sé el primero en organizar un coche compartido, habitación o espacio de gimnasio. 📌",
-      trv_noWeights: "Aún no has registrado pesos — añade tu peso matutino arriba para empezar la tendencia. ⚖️",
       learnMore: "Saber más →",
       websiteBtn: "🌐 Sitio web",
       socialBtn: "📱 Redes",
@@ -63134,7 +62791,6 @@ window.AUSBOX_DATA = {
       tab_training: "🥊 Entraînement",
       tab_rankings: "🏅 Classements",
       tab_analytics: "📊 Analyses",
-      tab_travel: "🛩 Voyages",
       tab_gyms: "🥊 Salles",
       tab_pubs: "🍻 Pubs & Clubs",
       tab_worldtv: "🌍 TV Mondiale",
@@ -63198,17 +62854,6 @@ window.AUSBOX_DATA = {
       an_matrixSearch: "🔍 Rechercher un combattant par nom, palmarès ou division…",
       an_punch: "💥 Archive des Statistiques de Coups",
       an_lineal: "👑 Suivi du Titre \"Linéal\"",
-      trv_title: "Voyages, Logistique & Conformité Médicale",
-      trv_med: "🩺 Suivi Médical par État",
-      trv_weight: "⚖️ Suivi de Poids Inter-États",
-      trv_weightPh: "Poids (kg)",
-      trv_log: "+ Enregistrer le poids",
-      trv_coord: "🧭 Coordinateur de Voyage Régional",
-      trv_carpool: "Covoiturage",
-      trv_acc: "Hébergement",
-      trv_gym: "Espace de salle",
-      trv_other: "Autre",
-      trv_post: "📌 Publier sur le tableau",
       gy_title: "🥊 Salles & Recherche de Sparring",
       gy_dir: "🏋️ Annuaire des Salles",
       gy_dirDesc: "Clubs de boxe enregistrés sur les listes officielles des organismes d'État — trouvez une salle près de chez vous, ou en déplacement inter-États.",
@@ -63338,13 +62983,6 @@ window.AUSBOX_DATA = {
       pub_allStatesChip: "Tous les États",
       gy_yourPost: "Votre publication",
       gy_noGymPosts: "Aucune publication de sparring pour l'instant — inscrivez votre nom et trouvez des partenaires. 🥊",
-      trv_contact: "Contact :",
-      trv_yourPost: "Votre publication",
-      trv_remove: "🗑 Retirer",
-      trv_officialForm: "Formulaire officiel ↗",
-      trv_authoritySite: "Site de l'organisme ↗",
-      trv_noPostsTravel: "Aucune publication pour l'instant — soyez le premier à organiser un covoiturage, une chambre ou un espace de salle. 📌",
-      trv_noWeights: "Aucun poids enregistré — ajoutez votre poids du matin ci-dessus pour démarrer la tendance. ⚖️",
       learnMore: "En savoir plus →",
       websiteBtn: "🌐 Site web",
       socialBtn: "📱 Réseaux",
@@ -63548,7 +63186,6 @@ window.AUSBOX_DATA = {
       tab_training: "🥊 Pagsasanay",
       tab_rankings: "🏅 Mga Ranking",
       tab_analytics: "📊 Analytics",
-      tab_travel: "🛩 Paglalakbay",
       tab_gyms: "🥊 Mga Gym",
       tab_pubs: "🍻 Pubs at Clubs",
       tab_worldtv: "🌍 World TV",
@@ -63612,17 +63249,6 @@ window.AUSBOX_DATA = {
       an_matrixSearch: "🔍 Maghanap ng fighter ayon sa pangalan, record o dibisyon…",
       an_punch: "💥 Punch Stats Archive",
       an_lineal: "👑 Ang \"Lineal\" Title Tracker",
-      trv_title: "Paglalakbay, Logistics at Medical Compliance",
-      trv_med: "🩺 State Medical Tracker",
-      trv_weight: "⚖️ Interstate Weight Tracker",
-      trv_weightPh: "Timbang (kg)",
-      trv_log: "+ I-log ang timbang",
-      trv_coord: "🧭 Regional Travel Coordinator",
-      trv_carpool: "Carpool",
-      trv_acc: "Akomodasyon",
-      trv_gym: "Espasyo sa gym",
-      trv_other: "Iba pa",
-      trv_post: "📌 Mag-post sa board",
       gy_title: "🥊 Gyms at Sparring Finder",
       gy_dir: "🏋️ Direktoryo ng Gym",
       gy_dirDesc: "Mga rehistradong boxing club mula sa opisyal na state body list — maghanap ng gym na malapit sa iyo, o kapag naglalakbay ka interstate.",
@@ -63752,13 +63378,6 @@ window.AUSBOX_DATA = {
       pub_allStatesChip: "Lahat ng estado",
       gy_yourPost: "Ang post mo",
       gy_noGymPosts: "Wala pang sparring post — ilagay ang pangalan mo at humanap ng kasama. 🥊",
-      trv_contact: "Contact:",
-      trv_yourPost: "Ang post mo",
-      trv_remove: "🗑 Alisin",
-      trv_officialForm: "Opisyal na form ↗",
-      trv_authoritySite: "Site ng ahensya ↗",
-      trv_noPostsTravel: "Wala pang post — maging una kang mag-organisa ng carpool, room-share o gym space. 📌",
-      trv_noWeights: "Wala pang na-log na timbang — idagdag ang timbang mo sa umaga para magsimula ng trend. ⚖️",
       learnMore: "Matuto pa →",
       websiteBtn: "🌐 Website",
       socialBtn: "📱 Social",
@@ -65169,139 +64788,6 @@ window.AUSBOX_DATA = {
     else showWorldDivision(0);
   }
 
-  /* ---------------- Travel, Logistics & Medical Compliance ---------------- */
-  function medBadge(saved) {
-    if (!saved) return '<span class="tag local med-badge" style="cursor:default;">Not set</span>';
-    var d = new Date(saved + "T00:00:00");
-    var days = Math.round((d - new Date()) / 86400000);
-    if (days < 0) return '<span class="tag major med-badge" style="cursor:default;">⚠ Expired ' + Math.abs(days) + 'd ago</span>';
-    if (days <= 30) return '<span class="tag med-badge" style="background:#f6c945;color:#1a1a1a;cursor:default;">⏳ Due in ' + days + 'd</span>';
-    return '<span class="tag local med-badge" style="cursor:default;">✅ ' + days + 'd left</span>';
-  }
-
-  function renderTravel() {
-    var t = DATA.travel;
-    document.getElementById("travel-note").textContent = t.note;
-    document.getElementById("travel-medical-intro").textContent = t.medical.intro;
-    document.getElementById("travel-medical").innerHTML = t.medical.states.map(function (s, si) {
-      var reqs = s.requirements.map(function (r, ri) {
-        var key = "abh_med_" + si + "_" + ri;
-        var saved = lsGet(key, "");
-        return '<div class="med-req">' +
-          '<div class="meta-row"><b>' + r.name + '</b> <span class="tag" style="background:var(--blue);color:#fff;">' + r.frequency + '</span></div>' +
-          '<div class="meta-row">' + r.detail + '</div>' +
-          (r.url ? '<div class="meta-row"><a href="' + r.url + '" target="_blank" rel="noopener">' + T("trv_officialForm") + '</a></div>' : '') +
-          '<div class="med-track">' + medBadge(saved) + '<input type="date" class="med-date" data-key="' + key + '" value="' + esc(saved) + '" aria-label="Due date for ' + r.name + '"></div>' +
-          '</div>';
-      }).join("");
-      return '<div class="card"><div class="card-title">' + s.state + ' <span class="tag state">' + s.authority.split("(")[0].trim() + '</span></div>' +
-        '<div class="meta-row">' + s.act + ' · <a href="' + s.url + '" target="_blank" rel="noopener">' + T("trv_authoritySite") + '</a></div>' +
-        reqs +
-        (s.extra ? '<div class="card-main" style="margin-top:8px;">' + s.extra + '</div>' : '') +
-        '</div>';
-    }).join("");
-
-    document.getElementById("travel-weight-note").textContent = t.weight.note;
-    renderWeights();
-    document.getElementById("weight-tips").innerHTML = t.weight.tips.map(function (x) { return "<li>" + x + "</li>"; }).join("");
-
-    document.getElementById("travel-board-note").textContent = t.travel.note;
-    document.getElementById("travel-hubs").innerHTML = t.travel.hubs.map(function (h) {
-      return '<span class="chip" style="cursor:default;">📍 ' + h.city + '</span>';
-    }).join("");
-    renderBoard();
-  }
-
-  function renderWeights() {
-    var w = lsGet("abh_weights", []);
-    var el = document.getElementById("weight-trend");
-    if (!w.length) { el.innerHTML = '<p class="empty">' + T("trv_noWeights") + '</p>'; return; }
-    w = w.slice().sort(function (a, b) { return (b.date || "").localeCompare(a.date || ""); });
-    el.innerHTML = w.map(function (x, i) {
-      var delta = "";
-      if (i < w.length - 1) {
-        var prev = parseFloat(w[i + 1].kg), cur = parseFloat(x.kg);
-        if (!isNaN(prev) && !isNaN(cur)) {
-          var d = cur - prev;
-          delta = d === 0 ? ' <span class="tag local" style="cursor:default;">=</span>'
-            : (d < 0 ? ' <span class="tag local" style="cursor:default;">▼ ' + Math.abs(d).toFixed(1) + ' kg</span>'
-              : ' <span class="tag major" style="cursor:default;">▲ ' + d.toFixed(1) + ' kg</span>');
-        }
-      }
-      return '<div class="card" style="padding:10px 14px;"><div class="boxer-head"><span class="rank-badge" style="width:26px;height:26px;font-size:12px;">' + (w.length - i) + '</span><div><div class="boxer-name" style="font-size:15px;">' + esc(x.kg) + ' kg</div><div class="boxer-division">' + fmtDate(x.date) + '</div></div>' + delta + '</div></div>';
-    }).join("");
-  }
-
-  function renderBoard() {
-    var seeds = (DATA.travel.travel.seed_boards || []).map(function (b, i) {
-      return { id: "seed-" + i, who: b.who, type: b.type, detail: b.detail, region: b.region, contact: b.contact, mine: false };
-    });
-    var mine = lsGet("abh_board", []).map(function (b) {
-      return { id: b.id, who: b.who, type: b.type, detail: b.detail, region: b.region, contact: b.contact, mine: true };
-    });
-    var all = mine.concat(seeds);
-    var el = document.getElementById("travel-board");
-    if (!all.length) { el.innerHTML = '<p class="empty">' + T("trv_noPostsTravel") + '</p>'; return; }
-    el.innerHTML = all.map(function (b) {
-      return '<div class="card"><div class="card-title">' + esc(b.who) +
-        ' <span class="tag" style="background:var(--blue);color:#fff;">' + esc(b.type) + '</span>' +
-        (b.region ? ' <span class="tag local">' + esc(b.region) + '</span>' : '') +
-        (b.mine ? ' <span class="tag state">' + T("trv_yourPost") + '</span>' : '') + '</div>' +
-        '<div class="meta-row">' + esc(b.detail) + '</div>' +
-        (b.contact ? '<div class="meta-row"><b>' + T("trv_contact") + '</b> ' + esc(b.contact) + '</div>' : '') +
-        (b.mine ? '<button class="btn" style="margin-top:8px;" data-bdel="' + esc(b.id) + '">' + T("trv_remove") + '</button>' : '') +
-        '</div>';
-    }).join("");
-  }
-
-  function initTravel() {
-    renderTravel();
-
-    var wa = document.getElementById("weight-add");
-    if (wa) wa.addEventListener("click", function () {
-      var d = document.getElementById("weight-date").value;
-      var kg = document.getElementById("weight-kg").value;
-      if (!d || !kg || isNaN(parseFloat(kg))) return;
-      var w = lsGet("abh_weights", []);
-      w.push({ date: d, kg: parseFloat(kg).toFixed(1) });
-      lsSet("abh_weights", w);
-      document.getElementById("weight-kg").value = "";
-      renderWeights();
-    });
-
-    var bp = document.getElementById("board-post");
-    if (bp) bp.addEventListener("click", function () {
-      var who = document.getElementById("board-who").value.trim();
-      var det = document.getElementById("board-detail").value.trim();
-      var ty = document.getElementById("board-type").value;
-      if (!who || !det) return;
-      var posts = lsGet("abh_board", []);
-      posts.unshift({ id: "mine-" + Date.now() + "-" + Math.floor(Math.random() * 1e6), who: who, detail: det, type: ty, region: "", contact: "dm on the hub" });
-      lsSet("abh_board", posts);
-      document.getElementById("board-who").value = "";
-      document.getElementById("board-detail").value = "";
-      renderBoard();
-    });
-
-    var medEl = document.getElementById("travel-medical");
-    if (medEl) medEl.addEventListener("change", function (e) {
-      var inp = e.target.closest(".med-date");
-      if (!inp) return;
-      lsSet(inp.getAttribute("data-key"), inp.value);
-      var badge = inp.parentNode.querySelector(".med-badge");
-      if (badge) badge.outerHTML = medBadge(inp.value);
-    });
-
-    var tb = document.getElementById("travel-board");
-    if (tb) tb.addEventListener("click", function (e) {
-      var b = e.target.closest("[data-bdel]");
-      if (!b) return;
-      var posts = lsGet("abh_board", []).filter(function (p) { return p.id !== b.getAttribute("data-bdel"); });
-      lsSet("abh_board", posts);
-      renderBoard();
-    });
-  }
-
   /* ---------------- Gyms & Sparring Finder ---------------- */
   var gymState = "all";
   var gymQuery = "";
@@ -65683,7 +65169,6 @@ window.AUSBOX_DATA = {
     initTraining();
     initMMA();
     renderRankings();
-    initTravel();
     initGyms();
     initPubs();
     initFighterProfile();
@@ -65992,11 +65477,6 @@ window.AUSBOX_DATA = {
     (DATA.rankings.state_bodies || []).forEach(function (s) {
       push("rankings", "gs_cat_rankings", "🏅", s.name, s.url || "", [s.name, s.url]);
     });
-    /* Travel */
-    var med = DATA.travel.medical || {};
-    push("travel", "gs_cat_travel", "🛩", med.intro || "State medical requirements", "State-by-state combat-sports medical compliance", [med.intro, "medical", "state", "requirements"]);
-    var wt = DATA.travel.weight || {};
-    push("travel", "gs_cat_travel", "🛩", wt.note || "Weight cutting", "Safe cuts before flying across time zones", [wt.note, "weight", "cut"]);
     /* Gyms */
     (DATA.gyms.gyms || []).forEach(function (g) {
       push("gyms", "gs_cat_gyms", "🥊", g.name, [g.city, g.state, g.region, g.focus].filter(Boolean).join(" · "), [g.name, g.city, g.state, g.region, g.focus, g.note]);
@@ -66038,7 +65518,7 @@ window.AUSBOX_DATA = {
 
   function gsCatLabel(cat) {
     var key = cat.replace("gs_cat_", "tab_");
-    var fallback = { tab_boxers: "Boxers", tab_events: "Events", tab_tv: "TV Guide", tab_worldtv: "World TV", tab_promoters: "Promoters", tab_reviews: "Reviews", tab_media: "Media", tab_training: "Training", tab_rankings: "Rankings", tab_travel: "Travel", tab_gyms: "Gyms", tab_pubs: "Pubs" }[key] || cat;
+    var fallback = { tab_boxers: "Boxers", tab_events: "Events", tab_tv: "TV Guide", tab_worldtv: "World TV", tab_promoters: "Promoters", tab_reviews: "Reviews", tab_media: "Media", tab_training: "Training", tab_rankings: "Rankings", tab_gyms: "Gyms", tab_pubs: "Pubs" }[key] || cat;
     var translated = T(key);
     return translated === key ? fallback : translated;
   }
